@@ -12,20 +12,9 @@ let workTime = parseInt(workTimeInput.value);
 let shortBreakTime = parseInt(shortBreakTimeInput.value);
 let longBreakTime = parseInt(longBreakTimeInput.value);
 let cyclesCompleted = 0;
+let timeRemaining = workTime * 60; // Initialize timeRemaining with initial work time
 
 function startTimer() {
-    if (!isRunning) {
-        isRunning = true;
-        startPauseButton.textContent = 'Pause';
-        timer = setInterval(updateTimer, 1000);
-    } else {
-        isRunning = false;
-        startPauseButton.textContent = 'Start';
-        clearInterval(timer);
-    }
-}
-
-function resetTimer() {
     isRunning = false;
     startPauseButton.textContent = 'Start';
     clearInterval(timer);
