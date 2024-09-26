@@ -2,7 +2,7 @@ const timeDisplay = document.getElementById('time');
 const startPauseButton = document.getElementById('start-pause');
 const resetButton = document.getElementById('reset');
 
-let timer; // Declare timer variable outside the functions
+let timer;
 let isRunning = false;
 let currentTimer = 'work';
 const workTime = 25 * 60; // Fixed work time in seconds
@@ -31,26 +31,16 @@ function resetTimer() {
 }
 
 function updateTimer() {
-  let minutes = Math.floor(timeRemaining / 60);
-  let seconds = timeRemaining % 60;
-
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  seconds = seconds < 10 ? '0' + seconds : seconds;
-
-  timeDisplay.textContent = `🍅 ${minutes}:${seconds}`;
-
-  if (timeRemaining === 0) {
-    clearInterval(timer);
-    if (currentTimer === 'work') {
-      currentTimer = 'short_break';
-      timeRemaining = shortBreakTime;
-    } else {
-      currentTimer = 'work';
-      timeRemaining = workTime;
-    }
-    startTimer();
-  } else {
+  if (isRunning) {
     timeRemaining--;
+
+    let minutes = Math.floor(timeRemaining / 60);
+    let seconds = timeRemaining % 60;
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    timeDisplay.textContent = `🍅 ${minutes}:${seconds}`;
   }
 }
 
