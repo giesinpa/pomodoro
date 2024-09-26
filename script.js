@@ -2,7 +2,7 @@ const timeDisplay = document.getElementById('time');
 const startPauseButton = document.getElementById('start-pause');
 const resetButton = document.getElementById('reset');
 
-let timer;
+let timer; // Declare timer variable outside the functions
 let isRunning = false;
 let currentTimer = 'work';
 const workTime = 25 * 60; // Fixed work time in seconds
