@@ -1,6 +1,7 @@
 const timeDisplay = document.getElementById('time');
 const startPauseButton = document.getElementById('start-pause');
 const resetButton = document.getElementById('reset');
+const bellSound = document.getElementById('bellSound');
 
 let timer;
 let isRunning = false;
@@ -41,6 +42,20 @@ function updateTimer() {
     seconds = seconds < 10 ? '0' + seconds : seconds;
 
     timeDisplay.textContent = `🍅 ${minutes}:${seconds}`;
+  }
+
+  if (timeRemaining === 0) {
+    clearInterval(timer);
+    bellSound.play(); // Play the bell sound when the timer is up
+
+    if (currentTimer === 'work') {
+      currentTimer = 'short_break';
+      timeRemaining = shortBreakTime;
+    } else {
+      currentTimer = 'work';
+      timeRemaining = workTime;
+    }
+    startTimer();
   }
 }
 
