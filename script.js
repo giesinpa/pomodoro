@@ -1,14 +1,13 @@
 const timeDisplay = document.getElementById('time');
 const startPauseButton = document.getElementById('start-pause');
 const resetButton = document.getElementById('reset');
-const workTimeInput = document.getElementById('work-time');
 const shortBreakTimeInput = document.getElementById('short-break-time');
 const longBreakTimeInput = document.getElementById('long-break-time');
 
 let timer;
 let isRunning = false;
 let currentTimer = 'work';
-let workTime = parseInt(workTimeInput.value);
+const workTime = 25 * 60; // Fixed work time in seconds
 let shortBreakTime = parseInt(shortBreakTimeInput.value);
 let longBreakTime = parseInt(longBreakTimeInput.value);
 let cyclesCompleted = 0;
