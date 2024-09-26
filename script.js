@@ -7,7 +7,7 @@ let isRunning = false;
 let currentTimer = 'work';
 const workTime = 25 * 60; // Fixed work time in seconds
 const shortBreakTime = 5 * 60; // Fixed short break time in seconds
-let cyclesCompleted = 0;
+let timeRemaining = workTime; // Initialize timeRemaining with initial work time
 
 function startTimer() {
   if (!isRunning) {
@@ -25,9 +25,9 @@ function resetTimer() {
   isRunning = false;
   startPauseButton.textContent = 'Start';
   clearInterval(timer);
-  timeDisplay.textContent = `🍅 ${workTime / 60}:00`;
+  timeRemaining = workTime; // Reset timeRemaining to workTime
+  timeDisplay.textContent = `🍅 ${timeRemaining / 60}:00`;
   currentTimer = 'work';
-  cyclesCompleted = 0;
 }
 
 function updateTimer() {
@@ -56,7 +56,3 @@ function updateTimer() {
 
 startPauseButton.addEventListener('click', startTimer);
 resetButton.addEventListener('click', resetTimer);
-
-// Initial timer setup
-timeRemaining = workTime;
-timeDisplay.textContent = `🍅 ${timeRemaining / 60}:00`;
